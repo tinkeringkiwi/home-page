@@ -1,4 +1,4 @@
-name: CI: Build & Publish Docker image
+name: Build & Publish Docker image
 
 on:
   push:
@@ -36,4 +36,4 @@ jobs:
             ghcr.io/tinkeringkiwi/home-page:${{ github.sha }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
-          
+
