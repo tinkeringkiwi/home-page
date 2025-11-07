@@ -49,30 +49,13 @@ jobs:
         with:
           version: 'v1.32.7'
 
-      # - name: Set up Kubeconfig
-      #   # Heck 
-      #   env:
-      #     KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
-      #   run: |
-      #     echo $KUBE_CONFIG > ./kubeconfig
-      #     head -n 1 ./kubeconfig
+      - name: Log in to Kubernetes
+        uses: azure/k8s-set-context@v3
+        with:
+          kubeconfig: ${{ secrets.KUBE_CONFIG }}
           
 
       - name: Restart deployment
-        env:
-          KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
         run: |
-          if [ -z "$KUBE_CONFIG" ]; then
-            echo "Missing required secret: KUBE_CONFIG" >&2
-            exit 1
-          fi
-          # Preserve newlines when writing the secret to a file
-          printf '%s' "$KUBE_CONFIG" > ./kubeconfig
-          echo "kubeconfig written (first line):"
-          head -n 1 ./kubeconfig
-          # sanity check kubectl can talk to the cluster
-          kubectl --kubeconfig ./kubeconfig version --short
-          # restart and wait for rollout
-          kubectl --kubeconfig ./kubeconfig rollout restart deployment/home-page -n portfolio
-          kubectl --kubeconfig ./kubeconfig rollout status deployment/home-page -n portfolio --timeout=120s
+          kubectl rollout restart deployment/home-page -n portfolio
 
