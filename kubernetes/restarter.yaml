@@ -6,7 +6,7 @@ metadata:
 rules:
 - apiGroups: ["apps"]
   resources: ["deployments"]
-  verbs: ["update"] # "update" is sufficient for kubectl rollout restart
+  verbs: ["patch", "get"] # "update" is sufficient for kubectl rollout restart
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
