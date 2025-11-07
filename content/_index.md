@@ -1,1 +1,1 @@
-A place for people who like to tinker and make silly projects for fun
+I am a tinkerer, I left my job to do whacky projects full time.
