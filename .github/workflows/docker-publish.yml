@@ -48,35 +48,14 @@ jobs:
         with:
           version: 'v1.32.7'
 
-      - name: Configure kubeconfig from secrets
-        env:
-          K8S_SERVER: ${{ secrets.K8S_SERVER_URL }}
-          K8S_TOKEN: ${{ secrets.K8S_TOKEN }}
-          K8S_CA_DATA: ${{ secrets.K8S_CA_DATA }}
-        run: |
-          mkdir -p $HOME/.kube
-          cat > $HOME/.kube/config <<EOF
-          apiVersion: v1
-          kind: Config
-          clusters:
-          - name: gh-actions-cluster
-            cluster:
-              server: "$K8S_SERVER"
-              insecure-skip-tls-verify: false
-              certificate-authority-data: "$K8S_CA_DATA"
-          users:
-          - name: github-actions
-            user:
-              token: "$K8S_TOKEN"
-          contexts:
-          - name: gh-actions-context
-            context:
-              cluster: gh-actions-cluster
-              user: github-actions
-          current-context: gh-actions-context
-          EOF
+      - name: Log in to Kubernetes
+        uses: azure/k8s-set-context@v3
+        with:
+          k8s-url: ${{ secrets.K8S_SERVER }}
+          k8s-secret: ${{ secrets.K8S_TOKEN }}
+          k8s-ca: ${{ secrets.K8S_CA_DATA }} 
 
       - name: Restart deployment
         run: |
-          kubectl --kubeconfig=$HOME/.kube/config rollout restart deployment/home-page -n portfolio
+          kubectl rollout restart deployment/home-page -n portfolio
 
