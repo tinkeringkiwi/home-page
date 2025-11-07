@@ -58,10 +58,20 @@ jobs:
           
 
       - name: Restart deployment
-        env: 
+        env:
           KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
         run: |
-          echo $KUBE_CONFIG > ./kubeconfig
+          if [ -z "$KUBE_CONFIG" ]; then
+            echo "Missing required secret: KUBE_CONFIG" >&2
+            exit 1
+          fi
+          # Preserve newlines when writing the secret to a file
+          printf '%s' "$KUBE_CONFIG" > ./kubeconfig
+          echo "kubeconfig written (first line):"
           head -n 1 ./kubeconfig
+          # sanity check kubectl can talk to the cluster
+          kubectl --kubeconfig ./kubeconfig version --short
+          # restart and wait for rollout
           kubectl --kubeconfig ./kubeconfig rollout restart deployment/home-page -n portfolio
+          kubectl --kubeconfig ./kubeconfig rollout status deployment/home-page -n portfolio --timeout=120s
 
