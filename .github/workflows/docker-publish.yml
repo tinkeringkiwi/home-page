@@ -1,4 +1,5 @@
 name: Build & Publish Docker image
+environment: production
 
 on:
   push:
