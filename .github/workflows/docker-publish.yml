@@ -48,16 +48,20 @@ jobs:
         with:
           version: 'v1.32.7'
 
-      - name: Set up Kubeconfig
-        # Heck 
-        env:
+      # - name: Set up Kubeconfig
+      #   # Heck 
+      #   env:
+      #     KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
+      #   run: |
+      #     echo $KUBE_CONFIG > ./kubeconfig
+      #     head -n 1 ./kubeconfig
+          
+
+      - name: Restart deployment
+        env: 
           KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
         run: |
           echo $KUBE_CONFIG > ./kubeconfig
           head -n 1 ./kubeconfig
-          
-
-      - name: Restart deployment
-        run: |
           kubectl --kubeconfig ./kubeconfig rollout restart deployment/home-page -n portfolio
 
