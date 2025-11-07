@@ -5,7 +5,7 @@ title = 'The Employee Appreciator'
 summary = "The Employee Appreciator is a mid-2000s inspired web app to generate a award for corporate's appreciation of its employees."
 category = "Blog"
 +++
-On a fateful day a couple of months ago, I was at a certain fast food establishment in a certain part of town, where they had a large "Employee of the Month" *shrine* prominently displayed for customers to see. I was so taken by the `graphic design is my passion`-ness of this employee appreciation altar, that I knew I had to make my own tribute to it. 
+On a beautiful spring morning a couple of months ago, I popped into my local branch of a certain red and yellow fast food chain, where they had a large "Employee of the Month" *shrine* prominently displayed for customers to see. I was so taken by the obvious passion and enthusiasm imbued in the graphic design of this employee appreciation altar, that I knew I had to craft my own respectful tribute. 
 
 On November 1st I was at the [Watchful](https://watchful.co.nz/) Halloween Hackathon, where I finally got my chance and a team to build the Employee Appreciator.
 
