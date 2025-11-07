@@ -32,7 +32,7 @@ spec:
       containers:
         - name: web
           image: ghcr.io/tinkeringkiwi/home-page:latest
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: Always
           ports:
             - containerPort: 80
               name: http
@@ -95,16 +95,18 @@ metadata:
   namespace: portfolio
   annotations:
     # Use the nginx ingress controller (change if you use another controller)
-    # kubernetes.io/ingress.class: "nginx"
-    # Redirect HTTP->HTTPS if TLS configured on the ingress controller
-    # nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    kubernetes.io/ingress.class: "nginx"
+    # Redirect HTTP->HTTPS once TLS is provisioned by cert-manager
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    # Request TLS cert from cert-manager using cluster-scoped Issuer 'letsencrypt-prod'
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
 spec:
   ingressClassName: nginx
-  # tls:
-  #   # Replace `tinkering-kiwi-tls` with your TLS secret (cert-manager or manual)
-  #   - hosts:
-  #       - tinkering.kiwi
-  #     secretName: tinkering-kiwi-tls
+  tls:
+    - hosts:
+        - tinkering.kiwi
+      # cert-manager will create this secret when the Certificate is issued
+      secretName: tinkering-kiwi-tls
   rules:
     - host: tinkering.kiwi
       http:

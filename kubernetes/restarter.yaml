@@ -1,0 +1,29 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: deployment-restarter
+  namespace: portfolio # or your target namespace
+rules:
+- apiGroups: ["apps"]
+  resources: ["deployments"]
+  verbs: ["update"] # "update" is sufficient for kubectl rollout restart
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: deployment-restarter-binding
+  namespace: portfolio # or your target namespace
+subjects:
+- kind: ServiceAccount
+  name: github-actions # The Service Account associated with the token
+  namespace: portfolio # or your target namespace
+roleRef:
+  kind: Role
+  name: deployment-restarter
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: github-actions
+  namespace: portfolio # Ensure this matches your target namespace

@@ -38,3 +38,45 @@ jobs:
             ghcr.io/tinkeringkiwi/home-page:latest
             ghcr.io/tinkeringkiwi/home-page:${{ github.sha }}
 
+  deploy:
+    name: Deploy (kubectl restart)
+    needs: build-and-push
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install kubectl
+        uses: azure/setup-kubectl@v3
+        with:
+          version: '1.27.0'
+
+      - name: Configure kubeconfig from secrets
+        env:
+          K8S_SERVER: ${{ secrets.K8S_SERVER_URL }}
+          K8S_TOKEN: ${{ secrets.K8S_TOKEN }}
+          K8S_CA_DATA: ${{ secrets.K8S_CA_DATA }}
+        run: |
+          mkdir -p $HOME/.kube
+          cat > $HOME/.kube/config <<EOF
+          apiVersion: v1
+          kind: Config
+          clusters:
+          - name: gh-actions-cluster
+            cluster:
+              server: "$K8S_SERVER"
+              insecure-skip-tls-verify: false
+              certificate-authority-data: "$K8S_CA_DATA"
+          users:
+          - name: github-actions
+            user:
+              token: "$K8S_TOKEN"
+          contexts:
+          - name: gh-actions-context
+            context:
+              cluster: gh-actions-cluster
+              user: github-actions
+          current-context: gh-actions-context
+          EOF
+
+      - name: Restart deployment
+        run: |
+          kubectl --kubeconfig=$HOME/.kube/config rollout restart deployment/home-page -n portfolio
+
