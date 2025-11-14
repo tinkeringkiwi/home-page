@@ -11,8 +11,8 @@ On November 1st I was at the [Watchful](https://watchful.co.nz/) Halloween Hacka
 
 **Behold, the Employee Appreciation Award:**
 ![An Employee Appreciation Award. There is the title "Employee Appreciation Award", an image of me as a confused employee on the left, with words like "Productivity" and "Attitude" floating around the right, with a Microsoft Paint gold star awkwardly positioned at the bottom-right.](featured.jpg)
-I know you're jealous of just how much I'm appreciated by Corporate, but don't worry,
-## You Can [Get Your Employee Appreciation Award Here](https://appreciator.myhackathon.app)
+
+## [Get Your Employee Appreciation Award Here](https://appreciator.myhackathon.app)
 
 ## The Tech
 
