@@ -4,6 +4,7 @@ draft = false
 title = 'The Employee Appreciator'
 summary = "The Employee Appreciator is a mid-2000s inspired web app to generate a award for corporate's appreciation of its employees."
 category = "Blog"
+tags = ["Project", "Whacky"]
 +++
 On a beautiful spring morning a couple of months ago, I popped into my local branch of a certain red and yellow fast food chain, where they had a large "Employee of the Month" *shrine* prominently displayed for customers to see. I was so taken by the obvious passion and enthusiasm imbued in the graphic design of this employee appreciation altar, that I knew I had to craft my own respectful tribute. 
 

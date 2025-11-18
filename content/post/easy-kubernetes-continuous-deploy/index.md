@@ -3,8 +3,12 @@ date = '2025-11-07T15:32:22+13:00'
 draft = false
 title = 'Easy Kubernetes Continuous Deployment with Github Actions'
 summary = 'A quick and easy way to do instant deployments to Kubernetes with Github Actions'
+tags = ["Kubernetes", "Tutorial"]
+
 +++
 So, I finally got around to making a portfolio site for the Tinkering Kiwi project. You're looking at it, baby! For this, I went with the [Hugo](https://gohugo.io) static site generator and the [Blowfish](https://blowfish.page/) theme. I've always liked the simplicity of just building a static site that you can deploy anywhere. So of course, I had to make it more complicated by adding Kubernetes and automatic continuous deployment.
+
+If you're new to Kubernetes, check out my post [Kubernetes Demystified](../kubernetes-demystified/) to learn some of the concepts this post will cover. 
 
 ## Why Kubernetes?
 
@@ -279,3 +283,6 @@ Now that Github Actions can interact with your Kubernetes cluster directly, ther
 
 ## Conclusion
 Of course this is entirely unnecessary for a simple static website such as this personal blog, but it's super cool to be able to publish content instantly by just committing it to Github. Unnecessary projects like this are exactly what being a Tinkering Kiwi is all about. 
+
+## Further Reading
+I created a post [Kubernetes Demystified](../kubernetes-demystified/) to go over the basics of Kubernetes, if you're new or want a refresher on the concepts used in this article. 

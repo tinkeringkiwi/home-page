@@ -4,4 +4,5 @@ draft = false
 title = 'Full Adder'
 summary = 'Building a full adder (binary addition) to teach myself electronics'
 externalUrl = "https://youtu.be/B7WNK_ARlRA"
+tags = ["Project"]
 +++
