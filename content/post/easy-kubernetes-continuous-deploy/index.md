@@ -168,7 +168,7 @@ When you do this, you get all the Kubernetes magic. For example, if the new imag
 
 ## Adding Automated Deployment 
 
-Wouldn't it be swell if I could just push changes to my site to Github, and they be automatically deployed to the Kubernetes cluster?
+Wouldn't it be swell if I could just push changes to my site to Github, and they be automatically deployed to the Kubernetes cluster? I'd probably be 100% more likely to update it!
 
 ### Create a Service Account
 To give Github minimal permissions to automate this re-deployment of our image, we need to create another few things in Kubernetes
