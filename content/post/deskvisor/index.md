@@ -2,7 +2,7 @@
 date = '2026-01-17T19:38:44+13:00'
 title = 'Deskvisor'
 category = 'Deskvisor'
-summary = 'Overview and introduction to Deskvisor'
+summary = 'Overview and introduction to Deskvisor - my OS designed for desktop virtualisation'
 +++
 
 # Deskvisor
