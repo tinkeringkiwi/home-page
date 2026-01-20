@@ -33,11 +33,11 @@ I set up a VM with GPU passthrough following [this guide](#). I spent hours goin
 ## Sidequest 1 - Bluebuild
 Google and Google AI mode kept telling me I should be building my immutable OS the ✨new✨ way, with ✨Bluebuild✨. Bluebuild is some kind of abstraction layer on top of the underlying tools of building an immutable OS. The underlying tools are... Dockerfiles, which should be familiar to anyone who's built for the cloud in the last 10 years. Universal Blue rightfully realised this was a dumb idea and abandoned the project, but it continues to stumble along as a separate thing.
 
+To use Bluebuild, the easiest way is to use an image built with Bluebuild, as the tool will be installed on any such images automatically. Where should one obtain such an image? Fuck knows, I looked. *Really hard*. I could not find any other installation instructions for Bluebuild.
+
 ![MFW My Face](./ree.gif)
 
-Here's [how BlueBuild works](https://blue-build.org/learn/how/) in their own words. 
-
-The kicker? To use Bluebuild, the easiest way is to use an image built with Bluebuild, as the tool will be installed on any such images automatically. Where should one obtain such an image? Fuck knows, I looked. *Really hard*. I could not find any other installation instructions for Bluebuild.
+Want a chuckle? Here's [how BlueBuild works](https://blue-build.org/learn/how/) in their own words. Try finding any installation instructions while you're looking at their docs.
 
 ## Stage 2 - First Image
 I'd previously cloned the Universal Blue (uBlue) starter template for creating a custom image. This template uses Justfiles (an alternative to a Makefile), a Containerfile (Dockerfile) and some `build.sh` scripts to create an image. It also has targets to wrap the image up into virtual machine images or ISOs. Super cool. 
