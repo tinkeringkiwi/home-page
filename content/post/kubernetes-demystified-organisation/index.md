@@ -15,7 +15,7 @@ In this follow up, I'd like to take a step back, a little more chill, and talk a
 ## Namespaces
 In Kubernetes, all resources are assigned to a Namespace. In [part 1](../kubernetes-demystified/), we didn't interact with namespaces at all, so everything was done in the `default` namespace.
 
-Namespaces can be used however it makes sense to you to organise your workloads. I tend to have one Namespace per app. This might contain the application itself, database, the landing page, the docs, and a supporting service like an analytics service. Simpler application Namespaces that are entirely separate might just contain a single deployment, like [the Namespace for this website](../easy-kubernetes-continuous-deploy/). In a larger organisation you might end up with something more like `department-a` and `team-b` Namespaces. 
+Namespaces can be used however it makes sense to you to organise your workloads. I tend to have one Namespace per app. This might contain the application itself, database, the landing page, the docs, and a supporting service like an analytics service. Simpler application Namespaces that are entirely separate might just contain a single deployment, like [the Namespace for this website](../easy-kubernetes-continuous-deploy/). In a fancy multi-environment setup, you might use `staging-app`, `dev-app` or `main-app` Namespaces.
 
 You can create Namespaces imperatively on the command line:
 ```bash
